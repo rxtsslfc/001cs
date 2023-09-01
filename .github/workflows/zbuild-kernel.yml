@@ -131,7 +131,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
-        mv android_kernel_xiaomi_msm8996/* ./
+        cd android-kernel/arch/arm64/configs/
+        ls
       
     - name: 开启KVM配置
       if: env.ENABLE_KVM == 'true'
