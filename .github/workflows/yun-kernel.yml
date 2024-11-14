@@ -166,7 +166,7 @@ jobs:
 
       
     - name: 打入lxc补丁
-      #if: env.LXC_PATCH == 'true'
+      if: env.LXC_PATCH == 'true'
       run: |
        cd $GITHUB_WORKSPACE/kernel_workspace
        wget https://github.com/fate-think/LXC-DOCKER-KernelSU_Action/releases/download/1.0.0/runcpatch.sh
@@ -279,7 +279,7 @@ jobs:
        fi
   
     - name: 制作Anykernel3卡刷包
-      if: env.CHECK_FILE_IS_OK == 'true'
+      #if: env.CHECK_FILE_IS_OK == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/osm0sis/AnyKernel3
