@@ -157,7 +157,7 @@ jobs:
          
          
     - name: 开启lxc和docker配置
-      if: env.LXC_DOCKER == 'true'
+      #if: env.LXC_DOCKER == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         wget https://github.com/wu17481748/lxc-docker/releases/download/lxc-docker-2config/LXC-DOCKER-OPEN-CONFIG.sh
@@ -166,7 +166,7 @@ jobs:
 
       
     - name: 打入lxc补丁
-      if: env.LXC_PATCH == 'true'
+      #if: env.LXC_PATCH == 'true'
       run: |
        cd $GITHUB_WORKSPACE/kernel_workspace
        wget https://github.com/fate-think/LXC-DOCKER-KernelSU_Action/releases/download/1.0.0/runcpatch.sh
@@ -185,7 +185,7 @@ jobs:
        fi
 
     - name: 关闭ANDROID_PARANOID_NETWORK配置
-      if: env.ANDROID_PARANOID_NETWORK_OFF == 'true'
+      #if: env.ANDROID_PARANOID_NETWORK_OFF == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         sed -i '/CONFIG_ANDROID_PARANOID_NETWORK/d' android-kernel/arch/arm64/configs/${{ env.KERNEL_CONFIG }}
@@ -194,7 +194,7 @@ jobs:
         
   
     - name: 开启KSU
-      if: env.ENABLE_KERNELSU == 'true'
+      #if: env.ENABLE_KERNELSU == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         rm -rf KernelSU
