@@ -80,15 +80,15 @@ jobs:
        sudo ln -s /bin/python2.7 /bin/python
       
     - name: 下载Clang-aosp编译器
-      if: env.USE_CUSTOM_CLANG == 'false'
+      #if: env.USE_CUSTOM_CLANG == 'false'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         mkdir clang-aosp
         wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/${{ env.CLANG_BRANCH }}/clang-${{ env.CLANG_VERSION }}.tar.gz
-        tar -C clang-aosp/ -zxvf clang-${{ env.CLANG_VERSION }}.tar.gz
+        tar -C clang-aosp/ -zxvf clang-r416183b.tar.gz
 
     - name: 下载Custom-Clang编译器
-      #if: env.USE_CUSTOM_CLANG == 'true'
+      if: env.USE_CUSTOM_CLANG == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         if [[ https://github.com/AOSP-12/prebuilts_clang_host_linux-x86_clang-r445002.git =~ git ]]; then
