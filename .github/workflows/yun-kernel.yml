@@ -88,19 +88,19 @@ jobs:
         tar -C clang-aosp/ -zxvf clang-${{ env.CLANG_VERSION }}.tar.gz
 
     - name: 下载Custom-Clang编译器
-      if: env.USE_CUSTOM_CLANG == 'true'
+      #if: env.USE_CUSTOM_CLANG == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        if [[ ${{ env.CUSTOM_CLANG_SOURCE }} =~ git ]]; then
-            if [[ ${{ env.CUSTOM_CLANG_SOURCE }} == *'.tar.gz' ]]; then
-                wget -O clang.tar.gz ${{ env.CUSTOM_CLANG_SOURCE }}
+        if [[ https://github.com/AOSP-12/prebuilts_clang_host_linux-x86_clang-r445002.git =~ git ]]; then
+            if [[ https://github.com/AOSP-12/prebuilts_clang_host_linux-x86_clang-r445002.git == *'.tar.gz' ]]; then
+                wget -O clang.tar.gz https://github.com/AOSP-12/prebuilts_clang_host_linux-x86_clang-r445002.git
                 mkdir clang-aosp
                 tar -C clang-aosp/ -zxvf clang.tar.gz
             else
-                git clone ${{ env.CUSTOM_CLANG_SOURCE }} -b ${{ env.CUSTOM_CLANG_BRANCH }} clang-aosp --depth=1
+                git clone https://github.com/AOSP-12/prebuilts_clang_host_linux-x86_clang-r445002.git -b 12 clang-aosp --depth=1
             fi        
         else
-            wget -O clang.zip ${{ env.CUSTOM_CLANG_SOURCE }}
+            wget -O clang.zip https://github.com/AOSP-12/prebuilts_clang_host_linux-x86_clang-r445002.git
             mkdir clang-aosp
             unzip clang.zip -d clang-aosp/
         fi
