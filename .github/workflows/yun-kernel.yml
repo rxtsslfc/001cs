@@ -147,13 +147,13 @@ jobs:
         git clone https://github.com/liyafe1997/kernel_xiaomi_sm8250_mod -b android14-lineage21-mod android-kernel --depth=1
       
     - name: 开启KVM配置
-      if: env.ENABLE_KVM == 'true'
+      #if: env.ENABLE_KVM == 'true'
       run: |
          cd $GITHUB_WORKSPACE/kernel_workspace
-         echo "CONFIG_VIRTUALIZATION=y" >> android-kernel/arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
-         echo "CONFIG_KVM=y" >> android-kernel/arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
-         echo "CONFIG_VHOST_NET=y" >> android-kernel/arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
-         echo "CONFIG_VHOST_CROSS_ENDIAN_LEGACY=y" >> android-kernel/arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
+         echo "CONFIG_VIRTUALIZATION=y" >> android-kernel/arch/arm64/configs/elish_defconfig
+         echo "CONFIG_KVM=y" >> android-kernel/arch/arm64/configs/elish_defconfig
+         echo "CONFIG_VHOST_NET=y" >> android-kernel/arch/arm64/configs/elish_defconfig
+         echo "CONFIG_VHOST_CROSS_ENDIAN_LEGACY=y" >> android-kernel/arch/arm64/configs/elish_defconfig
          
          
     - name: 开启lxc和docker配置
