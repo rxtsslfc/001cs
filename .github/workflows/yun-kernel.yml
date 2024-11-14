@@ -106,7 +106,7 @@ jobs:
         fi
 
     - name: 下载Gcc-aosp编译器
-       env.METHOD_OK == 'A'
+       if env.METHOD_OK == 'A'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         if [ ${{ env.METHOD_OK }} = A ]; then
